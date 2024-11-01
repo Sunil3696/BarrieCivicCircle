@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { validateEmail, validatePassword } from '../helpers/validationHelpers';
 import { signUpUser } from '../services/auth.service';
-import SignUpImage from '../../assets/logo.jpg';
+import SignUpImage  from '../../assets/logo.jpg';
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 20,
-
+    alignSelf: 'flex-start',
   },
   image: {
     width: 100,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   input: {
-    width: '90%',
+    width: '100%',
     height: 50,
     backgroundColor: '#fff',
     paddingHorizontal: 15,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    width: '90%',
+    width: '100%',
     height: 50,
     backgroundColor: '#4CAF50',
     justifyContent: 'center',
