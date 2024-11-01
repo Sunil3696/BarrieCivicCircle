@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     // Firebase auth state listener
     const unsubscribe = auth().onAuthStateChanged((user) => {
-      setIsUserLoggedIn(!!user); // Set to true if user exists, otherwise false
+      setIsUserLoggedIn(!!user); // Set to true if user exists, otherwise false 0
       if (initializing) setInitializing(false);
     });
     
