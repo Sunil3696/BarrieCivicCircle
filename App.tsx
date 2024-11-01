@@ -1,36 +1,38 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React, { useState } from 'react';
-import LoginPage from './src/screens/LoginPage';
-import SignUpPage from './src/screens/SignUpPage';
+import React, { useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MainStackNavigator from './src/navigation/MainStackNavigator';
 import AuthStackNavigator from './src/navigation/AuthStackNavigator';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type {PropsWithChildren} from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-const MainStack = createNativeStackNavigator();
+import auth from '@react-native-firebase/auth';
 
 const App = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+
+  useEffect(() => {
+    // Firebase auth state listener
+    const unsubscribe = auth().onAuthStateChanged((user) => {
+      setIsUserLoggedIn(!!user); // Set to true if user exists, otherwise false
+      if (initializing) setInitializing(false);
+    });
+    
+    // Cleanup the listener on unmount
+    return unsubscribe;
+  }, [initializing]);
+
+  if (initializing) return null; // Optionally show a loading screen while initializing
 
   return (
     <SafeAreaProvider>
-    <NavigationContainer>
-      {isUserLoggedIn ? (
-        <MainStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
-      ) : (
-        <AuthStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
-      )}
-    </NavigationContainer>
+      <NavigationContainer>
+        {isUserLoggedIn ? (
+          <MainStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
+        ) : (
+          <AuthStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
+        )}
+      </NavigationContainer>
     </SafeAreaProvider>
   );
-}
-  
-  
+};
+
 export default App;
