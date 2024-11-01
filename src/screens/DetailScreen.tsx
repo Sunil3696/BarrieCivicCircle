@@ -1,10 +1,12 @@
 // DetailScreen.tsx
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
 
 const DetailScreen = ({ route }: any) => {
   const { item } = route.params;
-
+const handleParticipate = () => {
+    Alert.alert("You have reserved seat successfully. Please be on time")
+}
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={typeof item.image === 'string' ? { uri: item.image } : item.image} style={styles.image} />
@@ -23,7 +25,11 @@ const DetailScreen = ({ route }: any) => {
             <Text key={key} style={styles.additionalText}>{`${key}: ${value}`}</Text>
           ))}
         </View>
+        
       )}
+       <TouchableOpacity style={styles.participateButton} onPress={handleParticipate}>
+        <Text style={styles.buttonText}>Participate</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -87,6 +93,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#7f8c8d',
     marginBottom: 6,
+  },
+  participateButton: {
+    marginTop: 24,
+    backgroundColor: '#4CAF50',
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const TabNavigator = ({setIsUserLoggedIn}) => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
