@@ -4,7 +4,7 @@ import { validateEmail, validatePassword } from '../helpers/validationHelpers';
 import { signUpUser } from '../services/auth.service';
 import SignUpImage from '../../assets/logo.jpg';
 
-const SignUp = ({ navigation }) => {
+const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');

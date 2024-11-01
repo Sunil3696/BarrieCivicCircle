@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { validateEmail, validatePassword } from '../helpers/validationHelpers';
 import { signInUser } from '../services/auth.service';
-// Importing the local image
 import LoginImage from '../../assets/logo.jpg';
 
-const LoginScreen = ({ navigation, setIsUserLoggedIn }) => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,13 +20,10 @@ const LoginScreen = ({ navigation, setIsUserLoggedIn }) => {
     }
 
     try {
-      // Attempt to sign in with Firebase
       await signInUser(email, password);
       setError('');
-      setIsUserLoggedIn(true); // Update login state
-      navigation.navigate('Dashboard'); // Navigate to Dashboard upon successful login
     } catch (error) {
-      setError("Invalid Credentials, email or password incorrect"); // Display error from Firebase (e.g., incorrect credentials)
+      setError("Invalid Credentials, email or password incorrect");
     }
   };
 

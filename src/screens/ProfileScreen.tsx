@@ -4,7 +4,7 @@ import { signOutUser } from '../services/auth.service';
 import auth from '@react-native-firebase/auth';
 import commonStyles from '../styles/commonStyles';
 
-const ProfileScreen = ({ setIsUserLoggedIn }) => {
+const ProfileScreen = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ProfileScreen = ({ setIsUserLoggedIn }) => {
 
   const handleLogout = async () => {
     await signOutUser();
-    setIsUserLoggedIn(false);
+
   };
 
   return (

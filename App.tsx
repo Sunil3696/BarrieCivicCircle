@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     // Firebase auth state listener
     const unsubscribe = auth().onAuthStateChanged((user) => {
-      setIsUserLoggedIn(!!user); // Set to true if user exists, otherwise false 0
+      setIsUserLoggedIn(!!user); // Set to true if user exists, otherwise false
       if (initializing) setInitializing(false);
     });
     
@@ -26,9 +26,9 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         {isUserLoggedIn ? (
-          <MainStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
+          <MainStackNavigator />
         ) : (
-          <AuthStackNavigator setIsUserLoggedIn={setIsUserLoggedIn} />
+          <AuthStackNavigator />
         )}
       </NavigationContainer>
     </SafeAreaProvider>
