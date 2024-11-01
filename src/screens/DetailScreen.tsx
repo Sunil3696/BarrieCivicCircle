@@ -16,7 +16,7 @@ const DetailScreen = ({ route }: any) => {
       <Text style={styles.detail}>Entry Fee: {item.entryFee}</Text>
       {item.additionalInfo && (
         <View style={styles.additionalInfo}>
-          <Text style={styles.additionalTitle}>Additional Information:</Text>
+          <Text style={styles.additionalTitle}>Additional Informations:</Text>
           {Object.entries(item.additionalInfo).map(([key, value]) => (
             <Text key={key} style={styles.additionalText}>{`${key}: ${value}`}</Text>
           ))}
