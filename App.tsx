@@ -20,7 +20,7 @@ const App = () => {
     return unsubscribe;
   }, [initializing]);
 
-  if (initializing) return null; // Optionally show a loading screen while initializing
+  if (initializing) return null; 
 
   return (
     <SafeAreaProvider>
