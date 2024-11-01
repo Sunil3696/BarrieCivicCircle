@@ -5,6 +5,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import EventsScreen from '../screens/EventsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = ({ setIsUserLoggedIn }: any) => {
@@ -16,7 +17,7 @@ const TabNavigator = ({ setIsUserLoggedIn }: any) => {
           let iconName;
 
           if (route.name === 'Home') {
-            iconName = 'home-outline';
+            iconName = 'home';
           } else if (route.name === 'Events') {
             iconName = 'calendar';
           } else if (route.name === 'Profile') {

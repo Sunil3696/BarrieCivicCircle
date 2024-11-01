@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 20,
-    alignSelf: 'flex-start',
+
   },
   image: {
     width: 100,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   input: {
-    width: '100%',
+    width: '90%',
     height: 50,
     backgroundColor: '#fff',
     paddingHorizontal: 15,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    width: '100%',
+    width: '90%',
     height: 50,
     backgroundColor: '#4CAF50',
     justifyContent: 'center',
